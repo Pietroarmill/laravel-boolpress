@@ -24,7 +24,7 @@ class CreatePostTagTable extends Migration
                 ->references('id')
                 ->on('tags');
 
-            $table->primary('post_id', 'tag_id');
+            $table->primary(['post_id', 'tag_id']);
         });
     }
 
