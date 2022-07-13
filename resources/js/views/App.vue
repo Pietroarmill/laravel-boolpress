@@ -1,18 +1,17 @@
 <template>
   <div>
     <div class="container text-center mt-4">
-      <h1>questa è la pagina guest di boolpress</h1>
-      <WorkInProgress />
+      <Posts />
     </div>
   </div>
 </template>
 
 <script>
-import WorkInProgress from '../components/WorkInProgress';
+import Posts from '../components/Posts';
 export default {
   name: 'App',
   components: {
-    WorkInProgress
+    Posts
   }
 
 }
