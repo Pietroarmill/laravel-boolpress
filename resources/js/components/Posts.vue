@@ -4,22 +4,7 @@
     <div class="row">
       <div v-for="post in posts" :key="post.id" class="col">
         <!-- single post -->
-        <div class="card mb-3" style="width: 18rem;">
-          <!-- <img src="..." class="card-img-top" alt="..."> -->
-          <div class="card-body">
-            <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ troncateText(post.content, 100) }}</p>
-          </div>
-          <!-- <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div> -->
-        </div>
+        <PostCard :post="post"/>
         <!-- /single post -->
       </div>
     </div>
@@ -28,9 +13,13 @@
 
 <script>
 import Axios from 'axios';
+import PostCard from '../components/PostCard';
 
 export default {
   name: 'Posts',
+  components: {
+    PostCard
+  },
   data() {
     return {
       posts: []
@@ -45,15 +34,6 @@ export default {
         this.posts = resp.data.result;
       });
     },
-    troncateText(text, maxCharNumber) {
-      // se il testo è piu lungo di maxCharNumber
-        //taglia il testo e aggiungi ...
-      // altrimenti ritorno il tensto intero 
-      if (text.length > maxCharNumber) {
-        return text.substr(0, maxCharNumber) + '...';
-      }
-      return text;
-    }
   }
 }
 </script>
