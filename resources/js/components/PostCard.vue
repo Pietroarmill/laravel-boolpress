@@ -5,12 +5,10 @@
       <p>Category: {{ categoryName }}</p>
       <h5 class="card-title">{{ post.title }}</h5>
       <p class="card-text">{{ troncateText(100) }}</p>
-    </div>
-    <!--
+    </div>    
     <div class="card-body">
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div> -->
+      <router-link :to="{ name: 'single-post', params: {slug: post.slug} }" class="card-link">Leggi post</router-link>
+    </div>
   </div>
 </template>
 

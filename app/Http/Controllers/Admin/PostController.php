@@ -45,7 +45,6 @@ class PostController extends Controller
         $request->validate($this->getValidationRules());
 
         $data = $request->all();
-        dd($data);
         $post = new Post();
         $post->fill($data);
         $post->slug = Post::getPostSlug($post->title);
