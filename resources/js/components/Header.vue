@@ -9,16 +9,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li
-              class="nav-item"
-              v-for="(link, index) in menuLinks"
-              :key="index"
-            >
-              <router-link
-                class="nav-link"
-                :to="{ name: link.name }"
-                >{{ link.title }}</router-link
-              >
+            <li class="nav-item" v-for="(link, index) in menuLinks" :key="index">
+              <router-link class="nav-link" :to="{ name: link.name }">{{ link.title }}</router-link>
             </li>
           </ul>
         </div>
@@ -44,6 +36,10 @@ export default {
         {
           name: 'blog',
           title: 'Blog'
+        },
+        {
+          name: 'tags',
+          title: 'Tags'
         },
       ],
     }

@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import Axios from 'axios';
 import PostCard from '../components/PostCard';
 
 export default {

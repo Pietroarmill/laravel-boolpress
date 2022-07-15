@@ -2,6 +2,9 @@
   <div class="container">
     <section v-if="post">
       <h1>{{ post.title }}</h1>
+      <div  v-if="post.cover">
+        <img :src="post.cover" alt="">
+      </div>
       <p>Category: {{ categoryName }}</p>
       <router-link :to="{ name: 'single-tag', params: {slug: tag.slug} }" v-for="tag in post.tags" :key="tag.id" class="badge bg-warning text-dark mb-3 mr-1">{{ tag.name }}</router-link>
       <p>{{ post.content }}</p>
