@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Mail\NewPostNotificationToAdmin;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -43,6 +45,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // validazione dei dati
         $request->validate($this->getValidationRules());
 
         $data = $request->all();
@@ -52,14 +55,19 @@ class PostController extends Controller
             $data['cover'] = $image_path;
         }
 
+        //creazione del post
         $post = new Post();
         $post->fill($data);
         $post->slug = Post::getPostSlug($post->title);
         $post->save();
 
+        //Collegamento con i tag
         if (isset($data['tags'])) {
             $post->tags()->sync($data['tags']);
         }
+
+        // Invio l'email di notifica della creazione di un post
+        Mail::to('superadmin@boolpress.it')->send(new NewPostNotificationToAdmin($post));
 
         return redirect()->route('admin.posts.show', ['post' => $post->id]);
     }
