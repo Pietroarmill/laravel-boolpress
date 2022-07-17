@@ -41,6 +41,10 @@ export default {
           name: 'tags',
           title: 'Tags'
         },
+        {
+          name: 'contacts',
+          title: 'Contacts'
+        },
       ],
     }
   }
